@@ -1,17 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>??貒篣</title>
+    <title>요신번역기</title>
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#ffffff">
     
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%234285F4%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2260%22>??</text></svg>">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>??</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%234285F4%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2260%22>🇰🇷</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇰🇷</text></svg>">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,7 +38,7 @@
         }
     </script>
     <style>
-        /* v6.9: 蝛拙??見撘?*/
+        /* v6.9: 穩定版樣式 */
         * {
             -webkit-user-select: text !important;
             user-select: text !important;
@@ -77,34 +77,32 @@
 </head>
 <body class="bg-gray-50 min-h-screen font-sans text-gray-800 pb-safe">
 
-    <!-- 隡箸??冽芋撘?蝷?-->
+    <!-- 伺服器模式提示 -->
     <div id="apiKeyModal" class="fixed inset-0 bg-gray-900/90 backdrop-blur-sm flex items-center justify-center z-[10000] hidden p-4">
         <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm">
-            <h2 class="text-xl font-bold mb-3 text-gray-800 flex items-center">設定 API Key</h2>
+            <h2 class="text-xl font-bold mb-3 text-gray-800 flex items-center">☁️ 雲端部署模式</h2>
             <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                本地版可直接填入 API Key。若是雲端版，也可改由伺服器環境變數管理。
+                API Key 由伺服器環境變數管理，前端不需設定。
             </p>
-            <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-primary hover:underline text-sm font-medium inline-block mb-3">申請/查看 Google AI Studio Key</a>
-            <input type="password" id="apiKeyInput" placeholder="貼上你的 API Key (AIza...)" class="w-full p-3 border border-gray-300 rounded-xl mb-3 focus:ring-2 focus:ring-primary focus:outline-none transition-all">
             <div class="flex justify-end space-x-3">
-                <button id="saveApiKeyBtn" class="bg-primary text-white px-5 py-2.5 rounded-xl hover:bg-blue-600 transition font-bold w-full shadow-lg shadow-blue-200">儲存</button>
+                <button id="saveApiKeyBtn" class="bg-primary text-white px-5 py-2.5 rounded-xl hover:bg-blue-600 transition font-bold w-full shadow-lg shadow-blue-200">知道了</button>
             </div>
         </div>
     </div>
 
-    <div id="app" class="max-w-md mx-auto p-4 sm:p-6 pb-72 min-h-screen flex flex-col">
-        <!-- ?撠 -->
+    <div id="app" class="max-w-md mx-auto p-4 sm:p-6 min-h-screen flex flex-col">
+        <!-- 頂部導航 -->
         <header class="flex justify-between items-center mb-6 pt-2 select-none">
             <div>
-                <h1 class="text-2xl font-extrabold text-primary tracking-tight">??貒篣</h1>
-                <p class="text-gray-400 text-xs font-medium">摮貊?撠??v6.9</p>
+                <h1 class="text-2xl font-extrabold text-primary tracking-tight">요신번역기</h1>
+                <p class="text-gray-400 text-xs font-medium">學習專用版 v6.9</p>
             </div>
             
             <div class="flex items-center space-x-2">
                 <div class="relative">
                     <select id="toneSelect" class="appearance-none bg-white border border-gray-200 text-gray-600 py-1.5 pl-3 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary text-xs font-bold relative z-10">
-                        <option value="plain">?儭?撟唾?</option>
-                        <option value="polite">?? ?祈?</option>
+                        <option value="plain">🗣️ 平語</option>
+                        <option value="polite">🙇 敬語</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 z-10">
                         <svg class="fill-current h-3 w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -118,33 +116,33 @@
         </header>
 
         <main class="flex-grow flex flex-col space-y-4">
-            <!-- 頛詨?憛?-->
+            <!-- 輸入區塊 -->
             <div class="relative group">
                 <div class="flex justify-between items-end mb-2 px-1">
-                    <label class="block text-sm font-bold text-gray-600">頛詨?批捆 (??銝?</label>
+                    <label class="block text-sm font-bold text-gray-600">輸入內容 (韓/中)</label>
                     <span id="typingStatus" class="text-xs text-primary font-bold hidden bg-blue-50 px-2 py-0.5 rounded-full">
-                        <span class="typing-indicator">蝑?頛詨...</span>
+                        <span class="typing-indicator">等待輸入...</span>
                     </span>
                 </div>
-                <!-- 頛詨獢?(z-index ??) -->
+                <!-- 輸入框 (z-index 提高) -->
                 <div class="relative shadow-sm rounded-2xl bg-white">
                     <textarea id="inputText" rows="3" 
                         class="w-full p-4 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary text-gray-800 transition-all resize-none min-h-[110px] text-lg shadow-sm appearance-none" 
-                        placeholder="隢甇方撓??.."></textarea>
+                        placeholder="請在此輸入..."></textarea>
                     <button id="clearButton" class="absolute top-2 right-2 text-gray-300 hover:text-red-500 p-2 rounded-full hover:bg-gray-50 transition hidden z-50">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
             </div>
 
-            <!-- ???? -->
+            <!-- 手動按鈕 -->
             <button id="translateButton" class="bg-primary hover:bg-blue-600 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:shadow-primary/30 transition active:scale-[0.98] flex items-center justify-center w-full">
-                <span id="btnText">??蝡蝧餉陌</span>
+                <span id="btnText">✨ 立即翻譯</span>
             </button>
             
             <div id="messageBox" class="text-center text-xs font-medium text-red-500 mt-2 hidden bg-red-50 py-2 rounded-lg"></div>
 
-            <!-- 蝯??憛?-->
+            <!-- 結果區塊 -->
             <div id="resultsContainer" class="space-y-4 hidden opacity-0 transition-opacity duration-500 pb-20">
                 <div class="flex items-center justify-between px-1 pt-2">
                     <div class="flex items-center space-x-2">
@@ -154,56 +152,56 @@
                     </div>
                 </div>
                 
-                <!-- ???∠? -->
+                <!-- 韓文卡片 -->
                 <div id="koreanCard" class="result-card editable-card relative bg-indigo-50/80 p-4 rounded-2xl border border-indigo-100 shadow-sm transition flex flex-col">
                     <div class="flex justify-between items-center mb-2">
                         <div class="flex items-center">
-                            <span class="text-lg mr-2">??</span><span class="font-bold text-indigo-900 text-sm">?? (Korean)</span>
+                            <span class="text-lg mr-2">🇰🇷</span><span class="font-bold text-indigo-900 text-sm">韓文 (Korean)</span>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <span id="koreanLoading" class="hidden text-indigo-400 text-[10px] animate-pulse">?湔銝?..</span>
+                            <span id="koreanLoading" class="hidden text-indigo-400 text-[10px] animate-pulse">更新中...</span>
                             <button id="koreanCopyBtn" class="bg-white text-indigo-500 active:text-indigo-700 p-1.5 rounded-lg shadow-sm border border-indigo-100 active:scale-90 transition relative z-20">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
                             </button>
                         </div>
                     </div>
-                    <div id="koreanCopiedBadge" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none transition"><span class="bg-indigo-600/90 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl">??撌脰?鋆</span></div>
+                    <div id="koreanCopiedBadge" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none transition"><span class="bg-indigo-600/90 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl">✅ 已複製</span></div>
                     <textarea id="koreanResult" class="w-full bg-transparent text-indigo-900 resize-none focus:outline-none text-lg leading-relaxed rounded p-1 min-h-[80px] appearance-none"></textarea>
                 </div>
                 
-                <!-- 銝剜??∠? -->
+                <!-- 中文卡片 -->
                 <div id="chineseCard" class="result-card editable-card relative bg-red-50/80 p-4 rounded-2xl border border-red-100 shadow-sm transition flex flex-col">
                      <div class="flex justify-between items-center mb-2">
                         <div class="flex items-center">
-                            <span class="text-lg mr-2">??</span><span class="font-bold text-red-900 text-sm">銝剜? (Chinese)</span>
+                            <span class="text-lg mr-2">🇹🇼</span><span class="font-bold text-red-900 text-sm">中文 (Chinese)</span>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <span id="chineseLoading" class="hidden text-red-400 text-[10px] animate-pulse">?湔銝?..</span>
+                            <span id="chineseLoading" class="hidden text-red-400 text-[10px] animate-pulse">更新中...</span>
                             <button id="chineseCopyBtn" class="bg-white text-red-500 active:text-red-700 p-1.5 rounded-lg shadow-sm border border-red-100 active:scale-90 transition relative z-20">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
                             </button>
                         </div>
                     </div>
-                    <div id="chineseCopiedBadge" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none transition"><span class="bg-red-600/90 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl">??撌脰?鋆</span></div>
+                    <div id="chineseCopiedBadge" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none transition"><span class="bg-red-600/90 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl">✅ 已複製</span></div>
                     <textarea id="chineseResult" class="w-full bg-transparent text-red-900 resize-none focus:outline-none text-lg leading-relaxed rounded p-1 min-h-[80px] appearance-none"></textarea>
                 </div>
 
-                <!-- ?桀??飛 -->
+                <!-- 單字教學 -->
                 <div id="vocabCard" class="bg-yellow-50 p-4 rounded-2xl border border-yellow-200/60 shadow-sm">
                     <div class="flex items-center mb-2">
-                        <span class="text-lg mr-2">??</span><span class="font-bold text-yellow-800 text-sm">?桀?蝑?</span>
+                        <span class="text-lg mr-2">📚</span><span class="font-bold text-yellow-800 text-sm">單字筆記</span>
                     </div>
                     <div id="vocabContent" class="text-gray-700 space-y-1.5 font-medium leading-relaxed whitespace-pre-line text-sm pl-1"></div>
                 </div>
                 
-                <!-- 甇瑕蝝??憿?-->
+                <!-- 歷史紀錄標題 -->
                 <div class="pt-4 border-t border-gray-100">
                     <button id="toggleHistory" class="flex items-center justify-between w-full py-2 text-gray-500 font-bold text-sm">
-                        <span>?? 甇瑕蝝?</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded-full">撅?/?嗉絲</span>
+                        <span>📜 歷史紀錄</span>
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded-full">展開/收起</span>
                     </button>
                     <div id="historySection" class="hidden space-y-2 mt-2 max-h-60 overflow-y-auto pr-1">
-                        <div class="flex justify-end"><button id="clearHistoryBtn" class="text-xs text-red-400 mb-2">皜征</button></div>
+                        <div class="flex justify-end"><button id="clearHistoryBtn" class="text-xs text-red-400 mb-2">清空</button></div>
                         <div id="historyList"></div>
                     </div>
                 </div>
@@ -211,28 +209,8 @@
         </main>
     </div>
 
-    <div id="replyDock" class="fixed inset-x-0 bottom-0 z-[9990] pointer-events-none">
-        <div class="max-w-md mx-auto p-3 sm:p-4 pointer-events-auto">
-            <div class="bg-white/95 backdrop-blur border border-gray-200 rounded-2xl shadow-2xl p-3">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-bold text-gray-500 tracking-wide">敹恍?閬</span>
-                    <div class="inline-flex rounded-lg border border-gray-200 overflow-hidden">
-                        <button id="replyTonePlainBtn" class="px-3 py-1.5 text-xs font-bold bg-primary text-white">撟唾?</button>
-                        <button id="replyTonePoliteBtn" class="px-3 py-1.5 text-xs font-bold bg-white text-gray-600">?祈?</button>
-                    </div>
-                </div>
-                <textarea id="replyInput" rows="2" class="w-full p-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none resize-none min-h-[68px]" placeholder="頛詨雿????摰對?銝剜?????"></textarea>
-                <div class="mt-2 flex items-center gap-2">
-                    <button id="replyTranslateBtn" class="flex-1 bg-secondary text-white text-sm font-bold py-2 rounded-xl hover:opacity-95 active:scale-[0.99] transition">蝧餅?????</button>
-                    <button id="replyCopyBtn" class="px-3 py-2 text-sm font-bold bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition">銴ˊ</button>
-                </div>
-                <textarea id="replyKoreanOutput" rows="2" readonly class="mt-2 w-full p-2.5 border border-green-200 bg-green-50 rounded-xl text-sm text-green-900 resize-none min-h-[64px]" placeholder="?ㄐ?＊蝷箏?湔鞎潔?????閬?></textarea>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // --- 1. ????霈 ---
+        // --- 1. 初始化與變數 ---
         const inputText = document.getElementById('inputText');
         const translateButton = document.getElementById('translateButton');
         const btnText = document.getElementById('btnText');
@@ -253,31 +231,16 @@
         const typingStatus = document.getElementById('typingStatus');
         
         const apiKeyModal = document.getElementById('apiKeyModal');
-        const apiKeyInput = document.getElementById('apiKeyInput');
         const saveApiKeyBtn = document.getElementById('saveApiKeyBtn');
         const settingsBtn = document.getElementById('settingsBtn');
-        const replyInput = document.getElementById('replyInput');
-        const replyTranslateBtn = document.getElementById('replyTranslateBtn');
-        const replyCopyBtn = document.getElementById('replyCopyBtn');
-        const replyKoreanOutput = document.getElementById('replyKoreanOutput');
-        const replyTonePlainBtn = document.getElementById('replyTonePlainBtn');
-        const replyTonePoliteBtn = document.getElementById('replyTonePoliteBtn');
 
         let debounceTimer;
         let reverseDebounceTimer; 
         const AUTO_TRANSLATE_DELAY = 1200; 
-        const CTRL_CC_WINDOW_MS = 700;
-        let lastCtrlCAt = 0;
-        let replyTone = localStorage.getItem('reply_tone') || 'plain';
-        let API_KEY = localStorage.getItem('gemini_api_key') || '';
 
-        // --- 2. 隡箸??冽芋撘身摰?---
+        // --- 2. 伺服器模式設定 ---
         function checkApiKey() {
-            if (!API_KEY) {
-                apiKeyModal.classList.remove('hidden');
-            } else {
-                apiKeyModal.classList.add('hidden');
-            }
+            apiKeyModal.classList.add('hidden');
         }
         
         const savedTone = localStorage.getItem('translation_tone') || 'plain';
@@ -291,17 +254,10 @@
         });
         
         saveApiKeyBtn.addEventListener('click', () => {
-            API_KEY = (apiKeyInput.value || '').trim();
-            if (API_KEY) {
-                localStorage.setItem('gemini_api_key', API_KEY);
-            } else {
-                localStorage.removeItem('gemini_api_key');
-            }
             apiKeyModal.classList.add('hidden');
         });
 
         settingsBtn.addEventListener('click', () => {
-            apiKeyInput.value = API_KEY;
             apiKeyModal.classList.remove('hidden');
         });
 
@@ -313,48 +269,35 @@
 
         checkApiKey();
 
-        // --- 3. ?詨?蝧餉陌?摩 ---
-                async function fetchGemini(promptText, tone = toneSelect.value) {
+        // --- 3. 核心翻譯邏輯 ---
+        async function fetchGemini(promptText) {
             try {
                 const response = await fetch('/api/translate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         promptText,
-                        tone,
-                        apiKey: API_KEY
+                        tone: toneSelect.value
                     })
                 });
 
                 if (response.status === 429) {
-                    throw new Error('目前請求量較高，請稍等幾秒後再試一次。');
+                    throw new Error("⏳ 請求太快了，請稍等一下再試 (429)");
                 }
-
-                if (response.status === 503) {
-                    throw new Error('Gemini 目前流量繁忙，系統已自動重試；請 10-30 秒後再試。');
-                }
-
                 if (!response.ok) {
-                    let detail = '';
+                    let detail = "";
                     try {
                         const errorData = await response.json();
-                        detail = errorData?.error ? ` - ${errorData.error}` : '';
-                        if (
-                            response.status === 500 &&
-                            !API_KEY &&
-                            String(errorData?.error || '').includes('GEMINI_API_KEY')
-                        ) {
-                            apiKeyModal.classList.remove('hidden');
-                        }
+                        detail = errorData?.error ? ` - ${errorData.error}` : "";
                     } catch (_) {}
-
                     throw new Error(`API 連線錯誤: ${response.status}${detail}`);
                 }
-
+                
                 return await response.json();
+
             } catch (e) {
-                console.error('Gemini Error:', e);
-                throw e;
+                console.error("Gemini Error:", e);
+                throw e; 
             }
         }
 
@@ -363,7 +306,7 @@
             if (!text) return;
 
             translateButton.disabled = true;
-            btnText.textContent = "??銝?..";
+            btnText.textContent = "分析中...";
             translateButton.classList.add('opacity-75', 'cursor-not-allowed');
             typingStatus.classList.add('hidden');
             messageBox.classList.add('hidden');
@@ -378,7 +321,7 @@
                 koreanResult.value = res.korean_translation;
                 chineseResult.value = res.chinese_translation;
                 
-                // v6.9: 撠?| 頧???蝚阡＊蝷?
+                // v6.9: 將 | 轉回換行符顯示
                 let vocabText = res.vocabulary || "無重點單字";
                 vocabContent.innerHTML = vocabText.replace(/\|/g, '<br>');
 
@@ -391,7 +334,7 @@
                 messageBox.classList.remove('hidden');
             } finally {
                 translateButton.disabled = false;
-                btnText.textContent = "??蝡蝧餉陌";
+                btnText.textContent = "✨ 立即翻譯";
                 translateButton.classList.remove('opacity-75', 'cursor-not-allowed');
             }
         }
@@ -412,7 +355,7 @@
                 
                 if (sourceType === 'korean') {
                     chineseResult.value = res.chinese_translation;
-                    // v6.9: ??蝧餉陌銋??? | 蝚西?
+                    // v6.9: 反向翻譯也要處理 | 符號
                     vocabContent.innerHTML = (res.vocabulary || "").replace(/\|/g, '<br>');
                     adjustHeight(chineseResult);
                 } else {
@@ -430,78 +373,7 @@
             }
         }
 
-        function applyReplyToneUI() {
-            const plainActive = replyTone === 'plain';
-            replyTonePlainBtn.className = plainActive
-                ? 'px-3 py-1.5 text-xs font-bold bg-primary text-white'
-                : 'px-3 py-1.5 text-xs font-bold bg-white text-gray-600';
-            replyTonePoliteBtn.className = plainActive
-                ? 'px-3 py-1.5 text-xs font-bold bg-white text-gray-600'
-                : 'px-3 py-1.5 text-xs font-bold bg-primary text-white';
-        }
-
-        function setReplyTone(tone) {
-            replyTone = tone;
-            localStorage.setItem('reply_tone', tone);
-            applyReplyToneUI();
-        }
-
-        function copyFromTextarea(textareaEl) {
-            if (!textareaEl.value) return;
-            textareaEl.select();
-            document.execCommand('copy');
-        }
-
-        async function translateReplyText() {
-            const text = replyInput.value.trim();
-            if (!text) return;
-
-            replyTranslateBtn.disabled = true;
-            replyTranslateBtn.classList.add('opacity-70', 'cursor-not-allowed');
-            const originalText = replyTranslateBtn.textContent;
-            replyTranslateBtn.textContent = '蝧餉陌銝?..';
-
-            try {
-                const res = await fetchGemini(text, replyTone);
-                replyKoreanOutput.value = res.korean_translation || '';
-                adjustHeight(replyKoreanOutput);
-            } catch (err) {
-                console.error(err);
-                messageBox.textContent = err.message;
-                messageBox.classList.remove('hidden');
-            } finally {
-                replyTranslateBtn.disabled = false;
-                replyTranslateBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-                replyTranslateBtn.textContent = originalText;
-            }
-        }
-
-        async function translateClipboardWithShortcut() {
-            if (!navigator.clipboard || !navigator.clipboard.readText) {
-                messageBox.textContent = '目前瀏覽器不支援讀取剪貼簿';
-                messageBox.classList.remove('hidden');
-                return;
-            }
-
-            try {
-                const copiedText = (await navigator.clipboard.readText()).trim();
-                if (!copiedText) {
-                    messageBox.textContent = '剪貼簿目前沒有可翻譯文字';
-                    messageBox.classList.remove('hidden');
-                    return;
-                }
-
-                inputText.value = copiedText;
-                clearButton.classList.remove('hidden');
-                await executeTranslation();
-            } catch (err) {
-                console.error('Clipboard shortcut failed', err);
-                messageBox.textContent = '讀取剪貼簿失敗，請確認此頁面有剪貼簿權限';
-                messageBox.classList.remove('hidden');
-            }
-        }
-
-        // --- 4. ???刻身摰?---
+        // --- 4. 監聽器設定 ---
 
         inputText.addEventListener('input', () => {
             clearButton.classList.remove('hidden');
@@ -509,10 +381,6 @@
             clearTimeout(debounceTimer);
             typingStatus.classList.remove('hidden');
             debounceTimer = setTimeout(executeTranslation, AUTO_TRANSLATE_DELAY);
-        });
-
-        replyInput.addEventListener('input', () => {
-            adjustHeight(replyInput);
         });
 
         koreanResult.addEventListener('input', () => {
@@ -529,25 +397,6 @@
             reverseDebounceTimer = setTimeout(() => {
                 updateFromResult('chinese', chineseResult.value);
             }, 1500);
-        });
-
-        replyTranslateBtn.addEventListener('click', translateReplyText);
-        replyCopyBtn.addEventListener('click', () => copyFromTextarea(replyKoreanOutput));
-        replyTonePlainBtn.addEventListener('click', () => setReplyTone('plain'));
-        replyTonePoliteBtn.addEventListener('click', () => setReplyTone('polite'));
-
-        document.addEventListener('keydown', (e) => {
-            if (e.isComposing || e.repeat) return;
-            if (!e.ctrlKey || e.key.toLowerCase() !== 'c') return;
-
-            const now = Date.now();
-            if (now - lastCtrlCAt <= CTRL_CC_WINDOW_MS) {
-                lastCtrlCAt = 0;
-                e.preventDefault();
-                translateClipboardWithShortcut();
-            } else {
-                lastCtrlCAt = now;
-            }
         });
 
         function adjustHeight(el) {
@@ -571,7 +420,7 @@
             const history = JSON.parse(localStorage.getItem('translation_history_v4') || '[]');
             historyList.innerHTML = '';
             if (history.length === 0) {
-                historyList.innerHTML = '<p class="text-gray-400 text-center py-4 text-xs italic">撠蝝?</p>';
+                historyList.innerHTML = '<p class="text-gray-400 text-center py-4 text-xs italic">尚無紀錄</p>';
                 return;
             }
             history.forEach(item => {
@@ -600,13 +449,13 @@
         }
 
         document.getElementById('clearHistoryBtn').addEventListener('click', () => {
-            if(confirm('蝣箏?皜征蝝??')) {
+            if(confirm('確定清空紀錄？')) {
                 localStorage.removeItem('translation_history_v4');
                 loadHistory();
             }
         });
 
-        // --- 5. 銴ˊ?閮剖? (?? + ??) ---
+        // --- 5. 複製功能設定 (按鈕 + 雙擊) ---
         function setupInteractions(cardId, textareaId, btnId, badgeId) {
             const card = document.getElementById(cardId);
             const textarea = document.getElementById(textareaId);
@@ -640,14 +489,9 @@
         setupInteractions('koreanCard', 'koreanResult', 'koreanCopyBtn', 'koreanCopiedBadge');
         setupInteractions('chineseCard', 'chineseResult', 'chineseCopyBtn', 'chineseCopiedBadge');
         
-        applyReplyToneUI();
-        adjustHeight(replyInput);
-        adjustHeight(replyKoreanOutput);
         loadHistory();
         translateButton.addEventListener('click', executeTranslation);
 
     </script>
 </body>
 </html>
-
-
