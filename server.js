@@ -245,6 +245,8 @@ function startServer(port = PORT) {
   });
 }
 
+const app = createApp();
+
 if (require.main === module) {
   startServer().catch((error) => {
     console.error("Failed to start server:", error);
@@ -252,7 +254,6 @@ if (require.main === module) {
   });
 }
 
-module.exports = {
-  createApp,
-  startServer,
-};
+module.exports = app;
+module.exports.createApp = createApp;
+module.exports.startServer = startServer;
