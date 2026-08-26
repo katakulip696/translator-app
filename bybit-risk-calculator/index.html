@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="application-name" content="Bybit 倉位計算機">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bybit 計算機">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<title>Bybit 分批倉位風險計算機</title>
+<style>html,body{margin:0;background:#080d18;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.loading{min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center}.loading b{font-size:20px}.loading small{display:block;color:#94a3b8;margin-top:8px}</style>
+</head>
+<body>
+<div class="loading"><div><b>Bybit 倉位計算機</b><small>正在載入...</small></div></div>
+<script>
+(async()=>{
+  try{
+    const b64=(await fetch('./app.gz.b64',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('payload');return r.text()})).trim();
+    const raw=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+    if(!('DecompressionStream' in window))throw new Error('browser');
+    const ds=new DecompressionStream('gzip');
+    const html=await new Response(new Blob([raw]).stream().pipeThrough(ds)).text();
+    document.open();document.write(html);document.close();
+  }catch(e){
+    document.body.innerHTML='<div class="loading"><div><b>無法載入計算機</b><small>請使用較新的 Safari / Chrome，並重新整理一次。</small></div></div>';
+  }
+})();
+</script>
+</body>
+</html>
