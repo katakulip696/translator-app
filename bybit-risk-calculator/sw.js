@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bybit-risk-calc-v6-pwa-4';
+const CACHE_NAME = 'bybit-risk-calc-v6-pwa-5';
 const APP_SHELL = [
   './',
   './index.html',
