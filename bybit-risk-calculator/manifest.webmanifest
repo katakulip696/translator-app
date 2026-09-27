@@ -1,7 +1,7 @@
 {
-  "name": "Bybit 分批倉位風險計算機",
-  "short_name": "Bybit 計算機",
-  "description": "離線可用的 Bybit 分批倉位風險計算工具",
+  "name": "Binance 分批倉位風險計算機",
+  "short_name": "Binance 計算機",
+  "description": "離線可用的 Binance 分批倉位風險計算工具",
   "lang": "zh-Hant",
   "start_url": "./",
   "scope": "./",
